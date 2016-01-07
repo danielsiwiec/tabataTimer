@@ -10,7 +10,9 @@ class TimerDelegate extends Ui.BehaviorDelegate {
     }
 
     function onSelect() {
-        model.start();
+    	if (!model.started){
+    		model.start();
+    	}
         return true;
     }
 
