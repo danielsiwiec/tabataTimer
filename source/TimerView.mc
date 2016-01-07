@@ -31,9 +31,8 @@ class TimerView extends Ui.View {
     }
     
     function setupDisplay(dc){
-    	dc.setColor( Gfx.COLOR_TRANSPARENT, Gfx.COLOR_BLACK );
+    	dc.setColor(  Gfx.COLOR_WHITE, Gfx.COLOR_BLACK );
         dc.clear();
-        dc.setColor( Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT );
     }
     
     function topText(text, dc){
