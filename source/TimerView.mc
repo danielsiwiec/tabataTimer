@@ -11,7 +11,7 @@ class TimerView extends Ui.View {
     }
 
     function onUpdate(dc) {
-    	setupDisplay(dc);
+    	setupDisplay(dc, model.phase);
     	if (model.done){
     		Ui.switchToView(new DoneView(model), new DoneDelegate(model), Ui.SLIDE_IMMEDIATE);
     	} else {
@@ -30,8 +30,12 @@ class TimerView extends Ui.View {
     	
     }
     
-    function setupDisplay(dc){
-    	dc.setColor(  Gfx.COLOR_WHITE, Gfx.COLOR_BLACK );
+    function setupDisplay(dc, phase){
+    	if (phase == :work) {
+    		dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_WHITE);
+    	} else {
+    		dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_BLACK);	
+    	}
         dc.clear();
     }
     
