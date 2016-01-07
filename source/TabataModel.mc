@@ -23,7 +23,7 @@ class Model{
 		timer.start(method(:onTimer), 1000, true);
 		phaseTimer.start(method(:onPhaseTimer), REST_TIME*1000, false);
 		started = true;
-		buzz();
+		buzz(1000);
 		Ui.requestUpdate();
 	}
 	
@@ -38,16 +38,18 @@ class Model{
 				done = true;
 				timer.stop();
 				phaseTimer.stop();
+				buzz(1500);
 			} else {
 				resetTimer(WORK_TIME);
 				phase = :work;
 				round = round + 1;
+				buzz(500);
 			}
 		} else {
 			resetTimer(REST_TIME);
 			phase = :rest;
+			buzz(500);
 		}
-		buzz();
 		Ui.requestUpdate();
 	}
 	
@@ -55,9 +57,9 @@ class Model{
 		phaseTimer.start(method(:onPhaseTimer), seconds*1000, false);
 	}
 	
-	function buzz(){
+	function buzz(duration){
 		//Toybox.System.println("Buzzed on: " + timerString());
-		var vibrateData = [ new Attention.VibeProfile(  50, 1000 ) ];
+		var vibrateData = [ new Attention.VibeProfile(  100, duration ) ];
 	    Attention.vibrate( vibrateData );
 	}
 	
