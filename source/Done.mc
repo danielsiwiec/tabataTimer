@@ -13,5 +13,9 @@ class DoneView extends Ui.View{
 
 class DoneDelegate extends Ui.BehaviorDelegate{
 	
-	
+	function onSelect(){
+		var model = new Model();
+		Ui.switchToView(new SplitView(), new SplitDelegate(), Ui.SLIDE_IMMEDIATE); 
+		return true;
+	}
 }

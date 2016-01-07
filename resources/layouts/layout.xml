@@ -5,5 +5,6 @@
 	
 	<layout id="DoneLayout">
 	    <label text="@Strings.done" x="center" y="center" font="Gfx.FONT_LARGE" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+	    <label text="@Strings.restart" x="center" y="130" font="Gfx.FONT_MEDIUM" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
 	</layout>
 </resources>

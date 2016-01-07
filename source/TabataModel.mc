@@ -4,6 +4,10 @@ using Toybox.Attention as Attention;
 
 class Model{
 
+	const WORK_TIME = 20;
+	const REST_TIME = 10;
+	const TOTAL_ROUNDS = 8;
+	
 	var round = 0;
 	var phase = :rest;
 	var done = false;
@@ -12,9 +16,6 @@ class Model{
 	var timer = new Timer.Timer();
 	var minutesFromStart = 0;
 	var secodsFromStart = 0;
-	const WORK_TIME = 2;
-	const REST_TIME = 1;
-	const TOTAL_ROUNDS = 8;
 
 	function start(){
 		startTime = Toybox.System.getTimer();
@@ -53,7 +54,7 @@ class Model{
 	}
 	
 	function buzz(){
-		Toybox.System.println("Buzzed on: " + timerString());
+		//Toybox.System.println("Buzzed on: " + timerString());
 		var vibrateData = [ new Attention.VibeProfile(  50, 1000 ) ];
 	    Attention.vibrate( vibrateData );
 	}

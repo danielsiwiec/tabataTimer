@@ -3,5 +3,5 @@
 
     <string id="start">Click START</string>
     <string id="done">Done!</string>
-
+	<string id="restart">START to reset</string>
 </strings>
