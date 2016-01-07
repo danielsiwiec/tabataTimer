@@ -31,19 +31,19 @@ class Model{
 	}
 	
 	function onPhaseTimer(){
-		if (round == TOTAL_ROUNDS) {
-			done = true;
-			timer.stop();
-			phaseTimer.stop();
-		} else {
-			if (phase == :rest){
+		if (phase == :rest){
+			if (round == TOTAL_ROUNDS) {
+				done = true;
+				timer.stop();
+				phaseTimer.stop();
+			} else {
 				resetTimer(WORK_TIME);
 				phase = :work;
 				round = round + 1;
-			} else {
-				resetTimer(REST_TIME);
-				phase = :rest;
 			}
+		} else {
+			resetTimer(REST_TIME);
+			phase = :rest;
 		}
 		buzz();
 		Ui.requestUpdate();
