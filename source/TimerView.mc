@@ -1,7 +1,7 @@
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics as Gfx;
 
-class TabataTimerView extends Ui.View {
+class TimerView extends Ui.View {
 
     var model;
     
@@ -12,7 +12,9 @@ class TabataTimerView extends Ui.View {
 
     function onUpdate(dc) {
     	setupDisplay(dc);
-    	if (model.running){
+    	if (model.done){
+    		Ui.switchToView(new DoneView(model), new DoneDelegate(model), Ui.SLIDE_IMMEDIATE);
+    	} else {
     		updateTime(dc);
 	    	bottomText("" + model.round, dc);
 	    	if (model.phase == :rest){
@@ -20,10 +22,6 @@ class TabataTimerView extends Ui.View {
 	    	} else {
 	    		topText("work", dc);
 	    	}
-    	} else if (model.done){
-    		middleText("DONE!", dc);
-    	} else {
-    		middleText("Press START", dc);
     	}
     }
     
@@ -49,10 +47,4 @@ class TabataTimerView extends Ui.View {
     function largeText(text, dc){
     	dc.drawText(dc.getWidth()/2, dc.getHeight()*0.25, Gfx.FONT_NUMBER_THAI_HOT, text, Gfx.TEXT_JUSTIFY_CENTER);
     }
-    
-    function middleText(text, dc){
-    	dc.drawText(dc.getWidth()/2, dc.getHeight()*0.4, Gfx.FONT_LARGE, text, Gfx.TEXT_JUSTIFY_CENTER);
-    }
-
-
 }

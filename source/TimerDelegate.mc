@@ -1,6 +1,6 @@
 using Toybox.WatchUi as Ui;
 
-class TabataTimerDelegate extends Ui.BehaviorDelegate {
+class TimerDelegate extends Ui.BehaviorDelegate {
 
 	var model;
 

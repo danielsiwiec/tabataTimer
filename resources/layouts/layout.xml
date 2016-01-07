@@ -1,0 +1,9 @@
+<resources>
+	<layout id="SplitLayout">
+	    <label text="@Strings.start" x="center" y="center" font="Gfx.FONT_LARGE" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+	</layout>
+	
+	<layout id="DoneLayout">
+	    <label text="@Strings.done" x="center" y="center" font="Gfx.FONT_LARGE" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+	</layout>
+</resources>
