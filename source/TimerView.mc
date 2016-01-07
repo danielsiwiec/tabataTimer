@@ -17,11 +17,16 @@ class TimerView extends Ui.View {
     	} else {
     		updateTime(dc);
 	    	bottomText("" + model.round, dc);
-	    	if (model.phase == :rest){
-	    		topText("rest", dc);
+	    	if (model.round == 0) {
+	    		topText("prep", dc);
 	    	} else {
-	    		topText("work", dc);
+	    		if (model.phase == :rest){
+		    		topText("rest", dc);
+		    	} else {
+		    		topText("work", dc);
+		    	}	
 	    	}
+	    	
     	}
     }
     

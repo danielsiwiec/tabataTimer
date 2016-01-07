@@ -64,15 +64,18 @@ class Model{
 	}
 	
 	function timerString(){
+		var minutes = 0;
+		var secondsOfAMinute = 0;
 		if (started){
-			var elapsedMillis = Toybox.System.getTimer() - startTime;
-	    	var seconds = elapsedMillis / 1000;
-	    	var minutes = seconds/60;
-	    	var secondsOfAMinute = seconds - minutes * 60;
-	    	return minutes.format("%d") + ":" + secondsOfAMinute.format("%02d");
+			var seconds = (Toybox.System.getTimer() - startTime) / 1000;
+	    	seconds = (REST_TIME - seconds).abs();
+	    	
+			minutes = seconds/60;
+		    secondsOfAMinute = seconds - minutes * 60;
+			
 		} else {
-			return "0:00";
+			secondsOfAMinute = REST_TIME;
 		}
-		
+		return minutes.format("%d") + ":" + secondsOfAMinute.format("%02d");
 	}
 }
