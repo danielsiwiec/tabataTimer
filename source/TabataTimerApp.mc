@@ -10,7 +10,8 @@ class TabataTimerApp extends App.AppBase {
 
     //! Return the initial view of your application here
     function getInitialView() {
-        return [ new SplitView(), new SplitDelegate() ];
+    	var model = new Model();
+        return [ new TimerView(model), new TimerDelegate(model) ];
     }
 
 }

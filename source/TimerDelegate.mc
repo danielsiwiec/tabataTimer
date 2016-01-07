@@ -10,7 +10,6 @@ class TimerDelegate extends Ui.BehaviorDelegate {
     }
 
     function onSelect() {
-    	Toybox.System.println("Clicked start");
         model.start();
         return true;
     }

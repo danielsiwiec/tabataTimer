@@ -15,7 +15,7 @@ class DoneDelegate extends Ui.BehaviorDelegate{
 	
 	function onSelect(){
 		var model = new Model();
-		Ui.switchToView(new SplitView(), new SplitDelegate(), Ui.SLIDE_IMMEDIATE); 
+		Ui.switchToView(new TimerView(model), new TimerDelegate(model), Ui.SLIDE_IMMEDIATE); 
 		return true;
 	}
 }

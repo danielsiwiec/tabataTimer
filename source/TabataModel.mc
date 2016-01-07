@@ -8,6 +8,7 @@ class Model{
 	const REST_TIME = 10;
 	const TOTAL_ROUNDS = 8;
 	
+	var started = false;
 	var round = 0;
 	var phase = :rest;
 	var done = false;
@@ -21,6 +22,7 @@ class Model{
 		startTime = Toybox.System.getTimer();
 		timer.start(method(:onTimer), 1000, true);
 		phaseTimer.start(method(:onPhaseTimer), REST_TIME*1000, false);
+		started = true;
 		buzz();
 		Ui.requestUpdate();
 	}
@@ -60,10 +62,15 @@ class Model{
 	}
 	
 	function timerString(){
-		var elapsedMillis = Toybox.System.getTimer() - startTime;
-    	var seconds = elapsedMillis / 1000;
-    	var minutes = seconds/60;
-    	var secondsOfAMinute = seconds - minutes * 60;
-    	return minutes.format("%d") + ":" + secondsOfAMinute.format("%02d");
+		if (started){
+			var elapsedMillis = Toybox.System.getTimer() - startTime;
+	    	var seconds = elapsedMillis / 1000;
+	    	var minutes = seconds/60;
+	    	var secondsOfAMinute = seconds - minutes * 60;
+	    	return minutes.format("%d") + ":" + secondsOfAMinute.format("%02d");
+		} else {
+			return "0:00";
+		}
+		
 	}
 }
