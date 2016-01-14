@@ -16,14 +16,14 @@ class TimerView extends Ui.View {
     		Ui.switchToView(new DoneView(model), new DoneDelegate(model), Ui.SLIDE_IMMEDIATE);
     	} else {
     		updateTime(dc);
-	    	bottomText("" + model.round, dc);
+	    	bottomText("" + model.round + "/" + model.TOTAL_ROUNDS, dc);
 	    	if (model.round == 0) {
 	    		topText("prep", dc);
 	    	} else {
 	    		if (model.phase == :rest){
 		    		topText("rest", dc);
 		    	} else {
-		    		topText("work", dc);
+		    		topText("GO", dc);
 		    	}	
 	    	}
 	    	
