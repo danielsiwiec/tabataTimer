@@ -16,14 +16,13 @@ class Model{
 	var round = 0;
 	var phase = :prep;
 	var done = false;
-	var started = false;
-	var refreshTimer = new Timer.Timer();
-	var sensors = Sensor.setEnabledSensors([Sensor.SENSOR_HEARTRATE]);
 	var session = ActivityRecording.createSession({:sport => ActivityRecording.SPORT_TRAINING, :subSport => ActivityRecording.SUB_SPORT_CARDIO_TRAINING, :name => "Tabata"});
+
+	hidden var refreshTimer = new Timer.Timer();
+	hidden var sensors = Sensor.setEnabledSensors([Sensor.SENSOR_HEARTRATE]);
 
 	function start(){
 		refreshTimer.start(method(:refresh), 1000, true);
-		started = true;
 		buzz(1000, Attention.TONE_START);
 		Ui.requestUpdate();
 	}
@@ -68,9 +67,5 @@ class Model{
 		var vibrateData = [ new Attention.VibeProfile(  100, duration ) ];
     Attention.vibrate( vibrateData );
 		Attention.playTone(tone);
-	}
-
-	function timerString(){
-		return "0:" + counter.format("%02d");
 	}
 }

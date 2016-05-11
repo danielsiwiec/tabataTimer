@@ -13,15 +13,15 @@ class TimerView extends Ui.View {
   function onUpdate(dc) {
   	setupDisplay(dc, model.phase);
   	if (model.done){
-  		Ui.switchToView(new DoneView(model), new DoneDelegate(model), Ui.SLIDE_IMMEDIATE);
+  		Ui.switchToView(new DoneView(), new DoneDelegate(), Ui.SLIDE_IMMEDIATE);
   	} else {
-  		largeText(model.timerString(), dc);
+  		largeText(timerString(), dc);
     	bottomText("" + model.round + "/" + model.TOTAL_ROUNDS, dc);
     	if (model.phase == :prep) {
-    		topText("prep", dc);
+    		topText("PREP", dc);
     	}
     	if (model.phase == :rest) {
-    		topText("rest", dc);
+    		topText("REST", dc);
     	}
       if (model.phase == :work) {
     		topText("GO", dc);
@@ -48,5 +48,9 @@ class TimerView extends Ui.View {
 
   function largeText(text, dc){
   	dc.drawText(dc.getWidth()/2, dc.getHeight()*0.25, Gfx.FONT_NUMBER_THAI_HOT, text, Gfx.TEXT_JUSTIFY_CENTER);
+  }
+
+  function timerString(){
+    return "0:" + model.counter.format("%02d");
   }
 }

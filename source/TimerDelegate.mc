@@ -2,7 +2,8 @@ using Toybox.WatchUi as Ui;
 
 class TimerDelegate extends Ui.BehaviorDelegate {
 
-	var model;
+	hidden var model;
+	hidden var started = false;
 
   function initialize(mdl) {
   	model = mdl;
@@ -10,8 +11,9 @@ class TimerDelegate extends Ui.BehaviorDelegate {
   }
 
   function onSelect() {
-  	if (!model.started){
+  	if (!started){
   		model.start();
+			started = true;
   	}
     return true;
   }

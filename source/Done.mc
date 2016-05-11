@@ -2,7 +2,7 @@ using Toybox.WatchUi as Ui;
 
 class DoneView extends Ui.View{
 
-	function initialize(mdl) {
+	function initialize() {
     View.initialize();
   }
 
