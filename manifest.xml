@@ -2,9 +2,6 @@
     <iq:application entry="TabataTimerApp" id="66D797415AC44A21A66B3B1745414DAF" launcherIcon="@Drawables.LauncherIcon" name="@Strings.AppName" type="watch-app">
 
         <iq:products>
-            <iq:product id="square_watch"/>
-            <iq:product id="round_watch"/>
-            <iq:product id="semi_round_watch"/>
             <iq:product id="fr630"/>
             <iq:product id="fr235"/>
             <iq:product id="fr230"/>
@@ -13,8 +10,6 @@
             <iq:product id="d2bravo"/>
             <iq:product id="fr920xt"/>
             <iq:product id="epix"/>
-            <iq:product id="edge_1000"/>
-            <iq:product id="edge_520"/>
         </iq:products>
 
         <iq:permissions>

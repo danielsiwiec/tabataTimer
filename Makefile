@@ -16,3 +16,8 @@ run: build
 
 deploy: build
 	cp bin/$(APPNAME).prg /Volumes/GARMIN/GARMIN/APPS/
+
+package:
+	monkeyc --warn --output bin/$(APPNAME).iq -m manifest.xml \
+	-z $(resources) -d $(DEVICE)_sim -u $(SDK_HOME)/bin/devices.xml \
+	-p $(SDK_HOME)/bin/projectInfo.xml $(sources) -e -r
