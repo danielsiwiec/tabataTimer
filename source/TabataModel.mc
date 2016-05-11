@@ -24,7 +24,7 @@ class Model{
 	function start(){
 		refreshTimer.start(method(:refresh), 1000, true);
 		started = true;
-		buzz(1000);
+		buzz(1000, Attention.TONE_START);
 		Ui.requestUpdate();
 	}
 
@@ -37,20 +37,20 @@ class Model{
 				phase = :work;
 				counter = WORK_TIME;
 				round++;
-				buzz(500);
+				buzz(500, Attention.TONE_LOUD_BEEP);
 			} else if (phase == :work) {
 				phase = :rest;
 				counter = REST_TIME;
-				buzz(500);
+				buzz(500, Attention.TONE_LOUD_BEEP);
 			}	else if (phase == :rest) {
 				if (round == TOTAL_ROUNDS){
 					finishUp();
-					buzz(1500);
+					buzz(1500, Attention.TONE_STOP);
 				} else {
 					phase = :work;
 					counter = WORK_TIME;
 					round++;
-					buzz(500);
+					buzz(500, Attention.TONE_LOUD_BEEP);
 				}
 			}
 		}
@@ -64,10 +64,10 @@ class Model{
 		refreshTimer.stop();
 	}
 
-	function buzz(duration){
+	function buzz(duration, tone){
 		var vibrateData = [ new Attention.VibeProfile(  100, duration ) ];
     Attention.vibrate( vibrateData );
-		Attention.playTone(Attention.TONE_TIME_ALERT);
+		Attention.playTone(tone);
 	}
 
 	function timerString(){
