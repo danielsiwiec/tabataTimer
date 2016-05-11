@@ -3,15 +3,21 @@ using Toybox.WatchUi as Ui;
 
 class TabataTimerApp extends App.AppBase {
 
-    function initialize() {
-        AppBase.initialize();
-    }
+  var model;
 
+  function initialize() {
+    AppBase.initialize();
+  }
 
-    //! Return the initial view of your application here
-    function getInitialView() {
-    	var model = new Model();
-        return [ new TimerView(model), new TimerDelegate(model) ];
+  function getInitialView() {
+  	model = new Model();
+    return [ new TimerView(model), new TimerDelegate(model) ];
+  }
+
+  function onStop() {
+    if (model.session.isRecording()) {
+      var result = model.session.stop() && model.session.discard();
     }
+  }
 
 }
