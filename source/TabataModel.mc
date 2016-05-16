@@ -11,6 +11,7 @@ class Model{
 	const PREP_TIME = REST_TIME;
 	const WORK_TIME = REST_TIME * 2;
 	const TOTAL_ROUNDS = 8;
+	const HAS_TONES = Attention has :playTone;
 
 	var counter = PREP_TIME;
 	var round = 0;
@@ -21,9 +22,12 @@ class Model{
 	hidden var refreshTimer = new Timer.Timer();
 	hidden var sensors = Sensor.setEnabledSensors([Sensor.SENSOR_HEARTRATE]);
 
+	function initialize(){
+	}
+
 	function start(){
 		refreshTimer.start(method(:refresh), 1000, true);
-		buzz(1000, Attention.TONE_START);
+		startBuzz();
 		Ui.requestUpdate();
 	}
 
@@ -36,20 +40,20 @@ class Model{
 				phase = :work;
 				counter = WORK_TIME;
 				round++;
-				buzz(500, Attention.TONE_LOUD_BEEP);
+				intervalBuzz();
 			} else if (phase == :work) {
 				phase = :rest;
 				counter = REST_TIME;
-				buzz(500, Attention.TONE_LOUD_BEEP);
+				intervalBuzz();
 			}	else if (phase == :rest) {
 				if (round == TOTAL_ROUNDS){
 					finishUp();
-					buzz(1500, Attention.TONE_STOP);
+					stopBuzz();
 				} else {
 					phase = :work;
 					counter = WORK_TIME;
 					round++;
-					buzz(500, Attention.TONE_LOUD_BEEP);
+					intervalBuzz();
 				}
 			}
 		}
@@ -63,9 +67,28 @@ class Model{
 		refreshTimer.stop();
 	}
 
-	function buzz(duration, tone){
+	function startBuzz(){
+		var foo = HAS_TONES && beep(Attention.TONE_LOUD_BEEP);
+		vibrate(1500);
+	}
+
+	function stopBuzz(){
+		var foo = HAS_TONES && beep(Attention.TONE_LOUD_BEEP);
+		vibrate(1500);
+	}
+
+	function intervalBuzz(){
+		var foo = HAS_TONES && beep(Attention.TONE_LOUD_BEEP);
+		vibrate(1000);
+	}
+
+	function vibrate(duration){
 		var vibrateData = [ new Attention.VibeProfile(  100, duration ) ];
-    Attention.vibrate( vibrateData );
+		Attention.vibrate( vibrateData );
+	}
+
+	function beep(tone){
 		Attention.playTone(tone);
+		return true;
 	}
 }
