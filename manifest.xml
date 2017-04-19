@@ -9,6 +9,9 @@
             <iq:product id="vivoactive" />
             <iq:product id="fenix3" />
             <iq:product id="fenix3_hr" />
+            <iq:product id="fenix5"/>
+            <iq:product id="fenix5x"/>
+            <iq:product id="fenix5s"/>
             <iq:product id="d2bravo" />
             <iq:product id="d2bravo_titanium" />
             <iq:product id="fr920xt" />
